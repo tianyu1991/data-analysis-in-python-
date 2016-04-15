@@ -9,6 +9,12 @@ data_2015= pd.read_csv('C:/Users/tianyu\Desktop/0415/Calls_for_Service_2015.csv'
 
 data_sum=pd.concat([data_2011, data_2012,data_2013, data_2014,data_2015])
 
+
+##What fraction of calls are of the most common type?
 type_counts = data_sum['Type_'].value_counts()
 print float(type_counts[1])/data_sum['Type_'].count()
 ##0.167121426631
+
+##Some calls result in an officer being dispatched to the scene, 
+##and some log an arrival time. What is the median response time 
+##(dispatch to arrival), in seconds, considering only valid (i.e. non-negative) times?
