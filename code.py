@@ -22,10 +22,11 @@ print float(type_counts[1])/data_sum['Type_'].count()
 ##(dispatch to arrival), in seconds, considering only valid (i.e. non-negative) times?
 subdata=data_sum[['TimeDispatch','TimeArrive']]
 subdata2=subdata[pd.notnull(subdata['TimeArrive'])&pd.notnull(subdata['TimeDispatch'])]
-arrive_time=map(lambda x:datetime.strptime(x, '%m/%d/%Y %I:%M:%S %p'),subdata2['TimeArrive'])
-dispatch_time=map(lambda x:datetime.strptime(x, '%m/%d/%Y %I:%M:%S %p'),subdata2['TimeDispatch'])
-delta=map(lambda x,y:x-y, arrive_time, dispatch_time)
-delta2=map(lambda x:x.seconds,delta)
-delta3=delta2[delta2>=0]
-np.median(delta3)
+from datetime import datetime
+arrive_time=pd.to_datetime(subdata2['TimeArrive'],format='%m/%d/%Y %I:%M:%S %p')
+dispatch_time=pd.to_datetime(subdata2['TimeDispatch'],format='%m/%d/%Y %I:%M:%S %p')
+delta=arrive_time-dispatch_time
+
+delta2=map(lambda x:float(x.seconds),delta)
+np.median(delta2)
 ##1254.0
