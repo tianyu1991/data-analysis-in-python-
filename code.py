@@ -45,3 +45,20 @@ np.max(t_grouped)-np.min(t_grouped)
 ##of an event type given a district to the unconditional probably of that event type? 
 ##Consider only events types which have more than 100 events. Note that some events have 
 ##their locations anonymized and are reported as being in district "0". These should be ignored.
+clean_data=data_sum[['Type_','PoliceDistrict']][data_sum['PoliceDistrict']!=0]
+type_counts = clean_data['Type_'].value_counts()
+types=type_counts[type_counts>100].index
+maxfr=0.0
+for t in types:
+    sub_data_type=clean_data[clean_data['Type_']==t]
+    t_grouped = sub_data_type.groupby(['PoliceDistrict']).count()
+    fr=float(np.max(t_grouped))/np.mean(t_grouped)
+    if (any(fr>maxfr)==True):
+        maxfr=fr    
+maxfr
+##7.369143
+
+
+##Find the call type that displayed the largest percentage decrease in volume between 
+##2011 and 2015. What is the fraction of the 2011 volume that this decrease represents? 
+##The answer should be between 0 and 1.
