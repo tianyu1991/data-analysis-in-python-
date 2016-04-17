@@ -29,4 +29,19 @@ delta=arrive_time-dispatch_time
 
 delta2=map(lambda x:float(x.seconds),delta)
 np.median(delta2)
-##1254.0
+##285.0
+
+##Work out the average (mean) response time in each district. What is the difference 
+##between the average response times of the districts with the longest and shortest times?
+data = {'ResponseTime':delta2,'District': subdata2['PoliceDistrict']}
+frame = DataFrame(data)
+t_grouped = frame.groupby(['District'])[['ResponseTime']].mean()
+np.max(t_grouped)-np.min(t_grouped)
+##186.398124
+
+
+##We can define surprising event types as those that occur more often in a district than 
+##they do over the whole city. What is the largest ratio of the conditional probability
+##of an event type given a district to the unconditional probably of that event type? 
+##Consider only events types which have more than 100 events. Note that some events have 
+##their locations anonymized and are reported as being in district "0". These should be ignored.
