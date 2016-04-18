@@ -62,3 +62,19 @@ maxfr
 ##Find the call type that displayed the largest percentage decrease in volume between 
 ##2011 and 2015. What is the fraction of the 2011 volume that this decrease represents? 
 ##The answer should be between 0 and 1.
+Type_2011=data_2011['Type_'].value_counts()
+Type_2015=data_2015['Type_'].value_counts()
+t=Types_diff[Types_diff==min(Types_diff)].index
+float(Type_2011.ix['89']-Type_2015.ix['89'])/sum(Type_2011)
+##0.00035087512961797733
+
+##The disposition represents the action that was taken to address the serivce call. 
+##Consider how the disposition of calls changes with the hour of the record's
+##creation time. Find the disposition whose fraction of that hour's disposition 
+##varies the most over a typical day. What is its change (maximum fraction minus minimum fraction)?
+
+
+We can use the call locations to estimate the areas of the police districts. Represent each as an ellipse with semi-axes given by a single standard deviation of the longitude and latitude. What is the area, in square kilometers, of the largest district measured in this manner?
+
+
+The calls are assigned a priority. Some types of calls will receive a greater variety of priorities. To understand which type of call has the most variation in priority, find the type of call whose most common priority is the smallest fraction of all calls of that type. What is that smallest fraction?
