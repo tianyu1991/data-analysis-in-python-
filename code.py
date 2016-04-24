@@ -16,6 +16,19 @@ data_sum=pd.concat([data_2011, data_2012,data_2013, data_2014,data_2015])
 type_counts = data_sum['Type_'].value_counts()
 print float(type_counts[1])/data_sum['Type_'].count()
 ##0.167121426631
+type_2011 = data_2011['Type_'].value_counts()
+type_2012 = data_2012['Type_'].value_counts()
+type_2013 = data_2013['Type_'].value_counts()
+type_2014 = data_2014['Type_'].value_counts()
+type_2015 = data_2015['Type_'].value_counts()
+type_counts={'2011':type_2011[1:10],
+             '2012':type_2012[1:10],
+             '2013':type_2013[1:10],
+             '2014':type_2014[1:10],
+             '2015':type_2015[1:10],
+            }
+DataFrame(type_counts).plot(kind='bar').set_title('Types of Calls in 201-2015')
+
 
 ##Some calls result in an officer being dispatched to the scene, 
 ##and some log an arrival time. What is the median response time 
