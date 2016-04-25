@@ -3,6 +3,8 @@
 ![figpath](https://cloud.githubusercontent.com/assets/8493530/14777414/df1ff768-0a9a-11e6-963c-633de5b0f79a.png)
 ![means](https://cloud.githubusercontent.com/assets/8493530/14777412/df1ad760-0a9a-11e6-9547-93baa809b1ab.png)
 ![types](https://cloud.githubusercontent.com/assets/8493530/14777413/df1bd566-0a9a-11e6-86de-a8a05ba00e85.png)
+![box](https://cloud.githubusercontent.com/assets/8493530/14799079/d97bca4e-0b08-11e6-9216-ec5ae5f6bff6.png)
+
 
                      	2011     2012    	2013	   2014	   2015
                      	
