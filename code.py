@@ -46,18 +46,28 @@ np.median(delta2)
 ##285.0
 
 %matplotlib inline
-a=DataFrame(delta2[delta2 > 0 ],columns=['time'])
+delta3=delta2.ix['11']
+def cut_time(delta3):
+    a=DataFrame(delta3[delta3 > 0 ],columns=['time'])
+    li_t=np.arange(0,4.5,0.5)
+    bins=list( 10**li_t)
+    cut = pd.cut(a['time'], bins)
+    cuts=cut.value_counts()
+    cuts=cuts.sort_index()
+    return cuts
 
-li_t=np.arange(0,4.5,0.5)
-bins=list( 10**li_t)
+time_counts={'2011':cut_time(delta2.ix['11']),
+             '2012':cut_time(delta2.ix['12']),
+             '2013':cut_time(delta2.ix['13']),
+             '2014':cut_time(delta2.ix['14']),
+             '2015':cut_time(delta2.ix['15']),
+            }
 
-cut = pd.cut(a['time'], bins)
-cuts=cut.value_counts()
-cuts=cuts.sort_index()
 
-fig = plt.figure()
-ax = fig.add_subplot(1, 1, 1)
-cuts.plot(kind='line').set_title('The distribution of response time')
+time_counts=DataFrame(time_counts)
+
+
+ax=time_counts.plot(kind='line',title='The distribution of response time')
 labels = ax.set_xticklabels(['0-0.5','0.5-1', '1-1.5', '1.5-2', '2-2.5', '2.5-3','3-3.5','3.5-4'], rotation=30, fontsize='small')
 ax.set_xlabel('log(Response time)')
 ax.set_ylabel('the numbers of call')
