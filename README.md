@@ -1,6 +1,9 @@
 # data-analysis-in-python-
 
-![figpath](https://cloud.githubusercontent.com/assets/8493530/14773151/96ada550-0a74-11e6-93d0-ac879fcda739.png)
+![figpath](https://cloud.githubusercontent.com/assets/8493530/14777414/df1ff768-0a9a-11e6-963c-633de5b0f79a.png)
+![means](https://cloud.githubusercontent.com/assets/8493530/14777412/df1ad760-0a9a-11e6-9547-93baa809b1ab.png)
+![types](https://cloud.githubusercontent.com/assets/8493530/14777413/df1bd566-0a9a-11e6-86de-a8a05ba00e85.png)
+
                      	2011     2012    	2013	   2014	   2015
                      	
 (1, 3.162]	         35520  	41162	   26663	   4731	   3758
@@ -29,4 +32,3 @@ The response time of most of calls are 316~1000 secs.
 The numbers of calls got responded within 100 secs have continuing decreased from 2011 to 2015.
 
 
-![types](https://cloud.githubusercontent.com/assets/8493530/14772787/14418b12-0a70-11e6-986f-7b0972871810.png)
