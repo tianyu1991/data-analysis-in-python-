@@ -31,9 +31,6 @@ DataFrame(type_counts).plot(kind='bar').set_title('Types of Calls in 201-2015')
 plt.savefig('C:/Users/tianyu/Desktop/0415/types.png', dpi=400, bbox_inches='tight')
 
 
-##Some calls result in an officer being dispatched to the scene, 
-##and some log an arrival time. What is the median response time 
-##(dispatch to arrival), in seconds, considering only valid (i.e. non-negative) times?
 subdata=data_sum[['TimeDispatch','TimeArrive']]
 subdata2=subdata[pd.notnull(subdata['TimeArrive'])&pd.notnull(subdata['TimeDispatch'])]
 from datetime import datetime
