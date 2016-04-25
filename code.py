@@ -81,6 +81,23 @@ np.max(t_grouped)-np.min(t_grouped)
 ##186.398124
 
 
+import matplotlib
+matplotlib.style.use('ggplot')
+
+t_grouped = frame.groupby(['District'])[['ResponseTime']].mean()
+ax=t_grouped.plot(kind='bar',legend=False,title='The Response Times in Each Police District')
+ax.set_ylabel('The Means of Response Times(secs)')
+ax.set_xlabel('The Police District')
+ax.axhline(np.mean(delta2), color='k',linestyle='dashed')
+plt.savefig('C:/Users/tianyu/Desktop/0415/means.png', dpi=400, bbox_inches='tight')
+
+frame=frame[frame['Response Time']>0]
+bp = frame.boxplot(by='District',sym='', meanline=True,figsize=(6,6))
+bp.set_ylim([-10, 2000])
+bp.set_xlabel('Police District')
+plt.savefig('C:/Users/tianyu/Desktop/0415/box.png', dpi=400, bbox_inches='tight')
+
+
 ##We can define surprising event types as those that occur more often in a district than 
 ##they do over the whole city. What is the largest ratio of the conditional probability
 ##of an event type given a district to the unconditional probably of that event type? 
