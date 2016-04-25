@@ -28,6 +28,7 @@ type_counts={'2011':type_2011[1:10],
              '2015':type_2015[1:10],
             }
 DataFrame(type_counts).plot(kind='bar').set_title('Types of Calls in 201-2015')
+plt.savefig('C:/Users/tianyu/Desktop/0415/types.png', dpi=400, bbox_inches='tight')
 
 
 ##Some calls result in an officer being dispatched to the scene, 
@@ -43,6 +44,26 @@ delta=arrive_time-dispatch_time
 delta2=map(lambda x:float(x.seconds),delta)
 np.median(delta2)
 ##285.0
+
+%matplotlib inline
+a=DataFrame(delta2[delta2 > 0 ],columns=['time'])
+
+li_t=np.arange(0,4.5,0.5)
+bins=list( 10**li_t)
+
+cut = pd.cut(a['time'], bins)
+cuts=cut.value_counts()
+cuts=cuts.sort_index()
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+cuts.plot(kind='line').set_title('The distribution of response time')
+labels = ax.set_xticklabels(['0-0.5','0.5-1', '1-1.5', '1.5-2', '2-2.5', '2.5-3','3-3.5','3.5-4'], rotation=30, fontsize='small')
+ax.set_xlabel('log(Response time)')
+ax.set_ylabel('the numbers of call')
+plt.savefig('C:/Users/tianyu/Desktop/0415/figpath.png', dpi=400, bbox_inches='tight')
+
+
 
 ##Work out the average (mean) response time in each district. What is the difference 
 ##between the average response times of the districts with the longest and shortest times?
