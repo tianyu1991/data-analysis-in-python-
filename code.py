@@ -12,6 +12,26 @@ data_2015= pd.read_csv('C:/Users/tianyu\Desktop/0415/Calls_for_Service_2015.csv'
 data_sum=pd.concat([data_2011, data_2012,data_2013, data_2014,data_2015])
 
 
+def clean_data(data):
+    data=data.replace('TRAFFIC  INCIDENT', 'TRAFFIC INCIDENT')
+    data=data.replace('BURGLAR ALARM, SILEN', 'BURGLAR ALARM, SILENT')
+    data=data.replace('MEDICAL', 'AMBULANCE REQUEST')
+    data=data.replace(['MUNICIPAL ATTACHME','MUNICIPAL  ATTTACHME' ],'MUNICIPAL ATTACHMENT')
+    data=data.replace('FUGITIVE ATTTACHMENT', 'FUGITIVE ATTACHMENT')
+    return data
+
+data_2011=clean_data(data_2011)
+data_2012=clean_data(data_2012)
+data_2013=clean_data(data_2013)
+data_2014=clean_data(data_2014)
+data_2015=clean_data(data_2015)
+
+##plot the total number od calls from 2011 to 2015
+lens=Series([len(data_2011),len(data_2012),len(data_2013),len(data_2014),len(data_2015)],index=['2011','2012','2013','2014','2015'])
+lens=DataFrame(lens,columns=['The total number of calls'])
+lens.plot(kind='line').set_title('The Total Number of Calls from 2011 to 2015')
+plt.savefig('C:/Users/tianyu/Desktop/0415/numbers.png', dpi=400, bbox_inches='tight')
+
 ##What fraction of calls are of the most common type?
 type_counts = data_sum['Type_'].value_counts()
 print float(type_counts[1])/data_sum['Type_'].count()
